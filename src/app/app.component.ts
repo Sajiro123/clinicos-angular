@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend-clinicos';
+
+  constructor(private router: Router) {
+    // Log route changes
+    this.router.events.subscribe(event => {
+      console.log('Route event:', event);
+      console.log('Current URL:', this.router.url);
+    });
+  }
 }
